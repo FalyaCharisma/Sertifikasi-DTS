@@ -17,10 +17,10 @@ services:
         image: mysql
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: Admin1
+            MYSQL_ROOT_PASSWORD: Charisma9
             MYSQL_DATABASE: db_sertifikasi
             MYSQL_USER: admin
-            MYSQL_PASSWORD: Admin1
+            MYSQL_PASSWORD: Charisma9
         ports:
             - "9906:3306"
 
