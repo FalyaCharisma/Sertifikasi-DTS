@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+    app:
+        image: falyakuis2
+        container_name: web-server
+        build:
+            context: ./php
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./php/Sertifikasi-DTS:/var/www/html/
+        ports:
+            - 8000:80
+    db:
+        container_name: db
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: Admin1
+            MYSQL_DATABASE: db_sertifikasi
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: Admin1
+        ports:
+            - "9906:3306"
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '3060:80'
+        restart: always
+        environment:
+            PMA_HOST: db
+        depends_on:
+            - db
